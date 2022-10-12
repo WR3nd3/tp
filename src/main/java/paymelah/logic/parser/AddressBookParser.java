@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import paymelah.logic.commands.AddCommand;
 import paymelah.logic.commands.AddDebtCommand;
 import paymelah.logic.commands.ClearCommand;
+import paymelah.logic.commands.ClearDebtsCommand;
 import paymelah.logic.commands.Command;
 import paymelah.logic.commands.DeleteCommand;
 import paymelah.logic.commands.EditCommand;
@@ -18,6 +19,7 @@ import paymelah.logic.commands.FindDebtCommand;
 import paymelah.logic.commands.HelpCommand;
 import paymelah.logic.commands.ListCommand;
 import paymelah.logic.commands.ListDebtorsCommand;
+import paymelah.logic.commands.StatementCommand;
 import paymelah.logic.parser.exceptions.ParseException;
 
 /**
@@ -68,8 +70,14 @@ public class AddressBookParser {
         case FindDebtCommand.COMMAND_WORD:
             return new FindDebtCommandParser().parse(arguments);
 
+        case StatementCommand.COMMAND_WORD:
+            return new StatementCommand();
+
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ClearDebtsCommand.COMMAND_WORD:
+            return new ClearDebtsCommandParser().parse(arguments);
 
         case ListDebtorsCommand.COMMAND_WORD:
             return new ListDebtorsCommand();
